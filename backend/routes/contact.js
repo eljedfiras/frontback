@@ -3,7 +3,7 @@ const contactSchema = require('../backend/model/contact')
 const ContactRouter = express.Router()
 
 // get all users
-ContactRouter.get('/',async(req,res)=>{
+ContactRouter.get('/getuser',async(req,res)=>{
    try{
     const Contacts = await contactSchema.find()
     res.status(200).send({msg:'this is all users',Contacts})
@@ -27,7 +27,7 @@ ContactRouter.post('/adduser',async(req,res)=>{
 
 // put or update a user
 
-ContactRouter.put('/:id',async(req,res)=>{
+ContactRouter.put('/updateuser/:id',async(req,res)=>{
     try{
         const {id} = req.params
         const editUser = await contactSchema.findByIdAndUpdate(id,{$set:{...req.body}})
@@ -40,7 +40,7 @@ ContactRouter.put('/:id',async(req,res)=>{
 
 // delete a user
 
-ContactRouter.delete('/:id',async(req,res)=>{
+ContactRouter.delete('/deleteuser/:id',async(req,res)=>{
     try{
      const {id} = req.params
      const deleteUser = await contactSchema.findByIdAndDelete(id)
@@ -52,7 +52,7 @@ ContactRouter.delete('/:id',async(req,res)=>{
 })
 
 // get a user by id
-ContactRouter.get('/:id',async(req,res)=>{
+ContactRouter.get('/getuser/:id',async(req,res)=>{
     try{
 const {id} = req.params
 const getUser = await contactSchema.findById(id)

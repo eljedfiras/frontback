@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const fetchContacts = async()=>{
-    const {data} = await axios.get('http://localhost:5000s/api/user/getuser')
+    const {data} = await axios.get('http://localhost:5000/api/user/getuser')
     return data 
 }
 
